@@ -1,0 +1,25 @@
+service: s3-sqs-lambda
+
+configValidationMode: error
+
+useDotenv: true
+
+provider:
+  name: aws
+  stage: dev
+  runtime: nodejs16.x
+
+functions:
+  process:
+    handler: src/process.handler
+    name: process
+
+plugins:
+  - serverless-esbuild
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+    exclude:
+      - aws-sdk
