@@ -133,6 +133,17 @@
                       "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/process:*:*"
                     }
                   ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sqs:ReceiveMessage",
+                    "sqs:ChangeMessageVisibility",
+                    "sqs:DeleteMessage",
+                    "sqs:GetQueueAttributes",
+                    "sqs:GetQueueUrl"
+                  ],
+                  "Resource": "*"
                 }
               ]
             }
@@ -161,7 +172,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/s3-sqs-lambda/dev/1656364280284-2022-06-27T21:11:20.284Z/s3-sqs-lambda.zip"
+          "S3Key": "serverless/s3-sqs-lambda/dev/1656427240155-2022-06-28T14:40:40.155Z/s3-sqs-lambda.zip"
         },
         "Handler": "src/process.handler",
         "Runtime": "nodejs16.x",

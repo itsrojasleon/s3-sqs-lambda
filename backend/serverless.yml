@@ -8,6 +8,17 @@ provider:
   name: aws
   stage: dev
   runtime: nodejs16.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - 'sqs:ReceiveMessage'
+            - sqs:ChangeMessageVisibility
+            - sqs:DeleteMessage
+            - sqs:GetQueueAttributes
+            - sqs:GetQueueUrl
+          Resource: '*' # Don't do this, instead you can put the sqs arn or some part of it
 
 functions:
   process:

@@ -8,6 +8,23 @@
       "name": "aws",
       "stage": "dev",
       "runtime": "nodejs16.x",
+      "iam": {
+        "role": {
+          "statements": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "sqs:ReceiveMessage",
+                "sqs:ChangeMessageVisibility",
+                "sqs:DeleteMessage",
+                "sqs:GetQueueAttributes",
+                "sqs:GetQueueUrl"
+              ],
+              "Resource": "*"
+            }
+          ]
+        }
+      },
       "region": "us-east-1",
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
@@ -145,6 +162,9 @@
                             "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/process:*:*"
                           }
                         ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][0]"
                       }
                     ]
                   }
@@ -173,7 +193,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/s3-sqs-lambda/dev/1656364280284-2022-06-27T21:11:20.284Z/s3-sqs-lambda.zip"
+                "S3Key": "serverless/s3-sqs-lambda/dev/1656427240155-2022-06-28T14:40:40.155Z/s3-sqs-lambda.zip"
               },
               "Handler": "src/process.handler",
               "Runtime": "nodejs16.x",
@@ -357,7 +377,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/s3-sqs-lambda/dev/1656364280284-2022-06-27T21:11:20.284Z",
+    "artifactDirectoryName": "serverless/s3-sqs-lambda/dev/1656427240155-2022-06-28T14:40:40.155Z",
     "artifact": "s3-sqs-lambda.zip"
   }
 }
