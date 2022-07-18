@@ -172,7 +172,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/s3-sqs-lambda/dev/1656427240155-2022-06-28T14:40:40.155Z/s3-sqs-lambda.zip"
+          "S3Key": "serverless/s3-sqs-lambda/dev/1658170785409-2022-07-18T18:59:45.409Z/s3-sqs-lambda.zip"
         },
         "Handler": "src/process.handler",
         "Runtime": "nodejs16.x",
@@ -190,14 +190,14 @@
         "ProcessLogGroup"
       ]
     },
-    "ProcessLambdaVersionGdGBVyHa6RK4Hg63wdkGJsb1MwWbexhGPduYsXNSY9Q": {
+    "ProcessLambdaVersioncLy9BmBlLb80wXrYbVkjLTc8hsCUQTBkJP55b7hU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ProcessLambdaFunction"
         },
-        "CodeSha256": "Ys5DHbS6EIwTGVmlhcKHCBP2rMx+3Ry3tegyWYu8V7Q="
+        "CodeSha256": "t14AVqn8S+Vh8df7IFUmyT0FupA4H4LaPkyu9ygi6f0="
       }
     }
   },
@@ -213,7 +213,7 @@
     "ProcessLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ProcessLambdaVersionGdGBVyHa6RK4Hg63wdkGJsb1MwWbexhGPduYsXNSY9Q"
+        "Ref": "ProcessLambdaVersioncLy9BmBlLb80wXrYbVkjLTc8hsCUQTBkJP55b7hU"
       },
       "Export": {
         "Name": "sls-s3-sqs-lambda-dev-ProcessLambdaFunctionQualifiedArn"

@@ -4,7 +4,7 @@ export const handler = async (
   event: SQSEvent
 ): Promise<APIGatewayProxyResultV2> => {
   try {
-    console.log('processing data...', event.Records);
+    console.log('processing data...', JSON.stringify(event.Records));
 
     return {
       statusCode: 200,
