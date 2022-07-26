@@ -172,7 +172,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/s3-sqs-lambda/dev/1658170785409-2022-07-18T18:59:45.409Z/s3-sqs-lambda.zip"
+          "S3Key": "serverless/s3-sqs-lambda/dev/1658849315533-2022-07-26T15:28:35.533Z/s3-sqs-lambda.zip"
         },
         "Handler": "src/process.handler",
         "Runtime": "nodejs16.x",

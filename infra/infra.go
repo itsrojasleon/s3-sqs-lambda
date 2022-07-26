@@ -76,7 +76,10 @@ func NewInfraStack(scope constructs.Construct, id string, props *InfraStackProps
 		},
 	)
 
-	sqsEventSource := lambdaEvents.NewSqsEventSource(queue, &lambdaEvents.SqsEventSourceProps{})
+	sqsEventSource := lambdaEvents.NewSqsEventSource(queue, &lambdaEvents.SqsEventSourceProps{
+		// This will do the magic.
+		MaxBatchingWindow: cdk.Duration_Seconds(jsii.Number(5)),
+	})
 
 	fn.AddEventSource(sqsEventSource)
 
