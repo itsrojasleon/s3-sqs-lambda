@@ -10,20 +10,19 @@ provider:
   runtime: nodejs16.x
   iam:
     role:
-      statements:
-        - Effect: Allow
-          Action:
-            - 'sqs:ReceiveMessage'
-            - sqs:ChangeMessageVisibility
-            - sqs:DeleteMessage
-            - sqs:GetQueueAttributes
-            - sqs:GetQueueUrl
-          Resource: '*' # Don't do this, instead you can put the sqs arn or some part of it
+      Fn::ImportValue: lambdaRoleArn
 
 functions:
   process:
     handler: src/process.handler
     name: process
+    events:
+      - sqs:
+          arn:
+            Fn::ImportValue: coolQueueArn
+          functionResponseType: ReportBatchItemFailures
+          batchSize: 5
+          maximumBatchingWindow: 20
 
 plugins:
   - serverless-esbuild
@@ -32,5 +31,3 @@ custom:
   esbuild:
     bundle: true
     minify: true
-    exclude:
-      - aws-sdk
